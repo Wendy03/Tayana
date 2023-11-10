@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Home.master.cs" Inherits="Tayana.Home" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="assets/home/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/home/Scripts/jquery.cycle.all.2.74.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.topbuttom').click(function () {
+                $('html, body').scrollTop(0);
+
+            });
+
+        });
+        $(document).ready(function () {
+            $('.slideshow').cycle({
+                fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+            });
+        });
+        $(function () {
+
+            // 先取得 #abgne-block-20110111 , 必要參數及輪播間隔
+            var $block = $('#abgne-block-20110111'),
+                timrt, speed = 4000;
+
+
+            // 幫 #abgne-block-20110111 .title ul li 加上 hover() 事件
+            var $li = $('.title ul li', $block).hover(function () {
+                // 當滑鼠移上時加上 .over 樣式
+                $(this).addClass('over').siblings('.over').removeClass('over');
+            }, function () {
+                // 當滑鼠移出時移除 .over 樣式
+                $(this).removeClass('over');
+            }).click(function () {
+                // 當滑鼠點擊時, 顯示相對應的 div.info
+                // 並加上 .on 樣式
+
+                $(this).addClass('on').siblings('.on').removeClass('on');
+                var thisLi = $('#abgne-block-20110111 .bd .banner ul:eq(0)').children().eq($(this).index());
+                $('#abgne-block-20110111 .bd .banner ul:eq(0)').children().hide().eq($(this).index()).fadeIn(1000);
+                if (thisLi.children('input[type=hidden]').val() == 1) {
+                    thisLi.children('.new').show();
+                }
+
+            });
+
+            // 幫 $block 加上 hover() 事件
+            $block.hover(function () {
+                // 當滑鼠移上時停止計時器
+                clearTimeout(timer);
+            }, function () {
+                // 當滑鼠移出時啟動計時器
+                timer = setTimeout(move, speed);
+            });
+
+            // 控制輪播
+            function move() {
+                var _index = $('.title ul li.on', $block).index();
+                _index = (_index + 1) % $li.length;
+                $li.eq(_index).click();
+
+                timer = setTimeout(move, speed);
+            }
+
+            // 啟動計時器
+            timer = setTimeout(move, speed);
+
+            //相簿輪撥初始值設定
+            $('.title ul li:eq(0)').addClass('on');
+            var thisLi = $('#abgne-block-20110111 .bd .banner ul:eq(0) li:eq(0)');
+            thisLi.addClass('on');
+            if (thisLi.children('input[type=hidden]').val() == 1) {
+                thisLi.children('.new').show();
+            }
+
+            //最新消息TOP
+            $('.newstop').each(function () {
+                if ($(this).nextAll('input[type=hidden]').val() == 1) {
+                    $(this).show();
+                }
+            });
+        });
+
+    </script>
+    <link href="assets/home/css/homestyle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/home/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/home/css/reset.css" rel="stylesheet" type="text/css" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="contain">
+            <div class="sub">
+                <p>
+                    <asp:HyperLink ID="HomeLink" runat="server" NavigateUrl="~/Index.aspx">Home</asp:HyperLink>
+                </p>
+            </div>
+            <!--------------------------------選單開始---------------------------------------------------->
+            <div class="menu">
+                <ul>
+                    <li class="menuli01">
+                        <asp:HyperLink ID="YachtsLink" runat="server" NavigateUrl="~/Yachts_OverView.aspx">Yachts</asp:HyperLink>
+                    </li>
+                    <li class="menuli02">
+                        <asp:HyperLink ID="NewsLink" runat="server" NavigateUrl="~/News_List.aspx">NEWS</asp:HyperLink>
+                    </li>
+                    <li class="menuli03">
+                        <asp:HyperLink ID="CompanyLink" runat="server" NavigateUrl="~/Compan_About.aspx">COMPANY</asp:HyperLink>
+                    <li class="menuli04">
+                        <asp:HyperLink ID="DealersLink1" runat="server" NavigateUrl="~/Dealers.aspx">DEALERS</asp:HyperLink>
+                    <li class="menuli05">
+                        <asp:HyperLink ID="ContactLink" runat="server" NavigateUrl="~/Contact.aspx">CONTACT</asp:HyperLink>
+                    </li>
+                </ul>
+            </div>
+            <!--------------------------------選單開始結束---------------------------------------------------->
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <div class="footer">
+                <p class="footerp01">© 1973-2011 Tayana Yachts, Inc. All Rights Reserved</p>
+                <div class="footer01">
+                    <span>No. 60, Hai Chien Road, Chung Men Li, Lin Yuan District, Kaohsiung City, Taiwan, R.O.C.</span><br />
+                    <span>TEL：+886(7)641-2721</span> <span>FAX：+886(7)642-3193</span><span><a href="mailto:tayangco@ms15.hinet.net">E-mail：tayangco@ms15.hinet.net</a>.</span>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

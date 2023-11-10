@@ -1,0 +1,390 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="Tayana.Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+        name="description"
+        content="Mega Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta
+        name="keywords"
+        content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+    <meta name="author" content="codedthemes" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="../assets/admin/images/favicon.ico" type="image/x-icon" />
+    <!-- Google font-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Roboto:400,500"
+        rel="stylesheet" />
+    <!-- waves.css -->
+    <link
+        rel="stylesheet"
+        href="../assets/admin/pages/waves/css/waves.min.css"
+        type="text/css"
+        media="all" />
+    <!-- Required Fremwork -->
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="../assets/admin/css/bootstrap/css/bootstrap.min.css" />
+    <!-- waves.css -->
+    <link
+        rel="stylesheet"
+        href="../assets/admin/pages/waves/css/waves.min.css"
+        type="text/css"
+        media="all" />
+    <!-- themify icon -->
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="../assets/admin/icon/themify-icons/themify-icons.css" />
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="../assets/admin/icon/font-awesome/css/font-awesome.min.css" />
+    <!-- scrollbar.css -->
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="../assets/admin/css/jquery.mCustomScrollbar.css" />
+    <!-- am chart export.css -->
+    <link
+        rel="stylesheet"
+        href="https://www.amcharts.com/lib/3/plugins/export/export.css"
+        type="text/css"
+        media="all" />
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="../assets/admin/css/style.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <!-- Pre-loader start -->
+            <div class="theme-loader">
+                <div class="loader-track">
+                    <div class="preloader-wrapper">
+                        <div class="spinner-layer spinner-blue">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                        <div class="spinner-layer spinner-red">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+
+                        <div class="spinner-layer spinner-yellow">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+
+                        <div class="spinner-layer spinner-green">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pre-loader end -->
+            <div id="pcoded" class="pcoded">
+                <div class="pcoded-overlay-box"></div>
+                <div class="pcoded-container navbar-wrapper">
+                    <nav class="navbar header-navbar pcoded-header">
+                        <div class="navbar-wrapper">
+                            <div class="navbar-logo">
+                                <a
+                                    class="mobile-menu waves-effect waves-light"
+                                    id="mobile-collapse"
+                                    href="#!">
+                                    <i class="ti-menu"></i>
+                                </a>
+                                <asp:HyperLink ID="HomeHyperLink" runat="server" ImageUrl="../assets/home/images/pit008.jpg" ImageHeight="50" CssClass="img-fluid" NavigateUrl="~/Index.aspx">
+                                   
+                                </asp:HyperLink>
+                                <%--<a href="index.html">
+                                    <img
+                                        class="img-fluid"
+                                        src="assets/home/images/pit008.jpg"
+                                        alt="Theme-Logo" />
+                                </a>--%>
+                                <a class="mobile-options waves-effect waves-light">
+                                    <i class="ti-more"></i>
+                                </a>
+                            </div>
+
+                            <div class="navbar-container container-fluid">
+                                <ul class="nav-left">
+                                    <li>
+                                        <div class="sidebar_toggle">
+                                            <a href="javascript:void(0)"><i class="ti-menu"></i></a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="#!"
+                                            onclick="javascript:toggleFullScreen()"
+                                            class="waves-effect waves-light">
+                                            <i class="ti-fullscreen"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav-right">
+                                    <li class="header-notification">
+                                        <a href="#!" class="waves-effect waves-light">
+                                            <i class="ti-bell"></i>
+                                            <span class="badge bg-c-red"></span>
+                                        </a>
+                                        <ul class="show-notification">
+                                            <li>
+                                                <h6>Notifications</h6>
+                                                <label class="label label-danger">New</label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="user-profile header-notification">
+                                        <a href="#!" class="waves-effect waves-light">
+                                            <asp:Image ID="NavAvatar" runat="server" CssClass="img-radius" AlternateText="User-Profile-Image" />
+                                            <span>
+                                                <asp:Literal ID="NavUserName" runat="server"></asp:Literal>
+                                            </span>
+                                            <i class="ti-angle-down"></i>
+                                        </a>
+                                        <ul class="show-notification profile-notification">
+                                            <li class="waves-effect waves-light">
+                                                <asp:HyperLink ID="ProfileHyperLink" runat="server" NavigateUrl="~/Admin/Admin_Profile.aspx"><i class="ti-user"></i>Profile</asp:HyperLink>
+                                            </li>
+                                            <li class="waves-effect waves-light">
+                                                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Admin/Logoutashx.ashx"> <i class="ti-layout-sidebar-left"></i>Logout</asp:HyperLink>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <div class="pcoded-main-container">
+                        <div class="pcoded-wrapper">
+                            <nav class="pcoded-navbar">
+                                <div class="sidebar_toggle">
+                                    <a href="#"><i class="icon-close icons"></i></a>
+                                </div>
+                                <div class="pcoded-inner-navbar main-menu">
+                                    <div class="">
+                                        <div class="main-menu-header">
+                                            <asp:Image ID="SideAvatar" runat="server" CssClass="img-80 img-radius" AlternateText="User-Profile-Image" />
+                                            <div class="user-details">
+                                                <span id="more-details">
+                                                    <asp:Literal ID="SideUserName" runat="server"></asp:Literal>
+                                                    <i class="fa fa-caret-down"></i>
+
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="main-menu-content">
+                                            <ul>
+                                                <li class="more-details">
+                                                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Admin/Admin_Profile.aspx"><i class="ti-user"></i>View Profile</asp:HyperLink>
+                                                <%--    <a href="user-profile.html"><i class="ti-user"></i>View Profile</a>--%>
+                                                    <asp:HyperLink ID="LogoutHyperLink" runat="server" NavigateUrl="~/Admin/Logoutashx.ashx"><i class="ti-layout-sidebar-left"></i>Logout</asp:HyperLink>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="pcoded-navigation-label"
+                                        data-i18n="nav.category.navigation">
+                                        Yachts
+                                    </div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li>
+                                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Admin/Admin_Yachts.aspx" CssClass="waves-effect waves-dark"><span class="pcoded-micon"><i class="ti-anchor"></i><b>D</b></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.dash.main">Yachts</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </asp:HyperLink>
+
+                                        </li>
+                                    </ul>
+                                    <div
+                                        class="pcoded-navigation-label">
+                                        News
+                                    </div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li>
+                                            <asp:HyperLink ID="NewsListHyperLink" runat="server" CssClass="waves-effect waves-dark" NavigateUrl="~/Admin/Admin_NewsList.aspx">
+                                                <span class="pcoded-micon"><i class="ti-announcement"></i><b>FC</b></span>
+                                                <span
+                                                    class="pcoded-mtext"
+                                                    >News List</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </asp:HyperLink>
+                                        </li>
+                                        <li>
+                                            <asp:HyperLink ID="AddNewsHyperLink" runat="server" NavigateUrl="~/Admin/Admin_News.aspx" CssClass="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                                <span
+                                                    class="pcoded-mtext"
+                                                    >新增 News</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </asp:HyperLink>
+                                        </li>
+                                    </ul>
+
+                                    <div
+                                        class="pcoded-navigation-label">
+                                        Company
+                                    </div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li>
+                                            <asp:HyperLink ID="CompanyHyperLink" runat="server" NavigateUrl="~/Admin/Admin_Compan.aspx" CssClass="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-home"></i><b>FC</b></span>
+                                                <span
+                                                    class="pcoded-mtext"
+                                                    >公司介紹</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </asp:HyperLink>
+                                        </li>
+                                    </ul>
+                                    <div
+                                        class="pcoded-navigation-label">
+                                        Dealers
+                                    </div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li>
+                                            <asp:HyperLink ID="CountriesHyperLink" runat="server" NavigateUrl="~/Admin/Admin_DealerCountry.aspx" CssClass="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-map-alt"></i><b>FC</b></span>
+                                                <span
+                                                    class="pcoded-mtext"
+                                                    >代理國家列表</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </asp:HyperLink>
+                                        </li>
+                                    </ul>
+                                    <asp:Panel ID="UserListPanel" runat="server" Visible="False">
+                                        <div
+                                            class="pcoded-navigation-label">
+                                            Users
+                                        </div>
+                                        <ul class="pcoded-item pcoded-left-item">
+                                            <li>
+                                                <asp:HyperLink ID="UserHyperLink" runat="server" NavigateUrl="~/Admin/Admin_User.aspx" CssClass="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-user"></i><b>FC</b></span>
+                                                <span
+                                                    class="pcoded-mtext"
+                                                    >員工管理</span>
+                                                <span class="pcoded-mcaret"></span>
+                                                </asp:HyperLink>
+                                            </li>
+                                        </ul>
+                                    </asp:Panel>
+                                </div>
+                            </nav>
+                            <div class="pcoded-content">
+                                <!-- Page-header start -->
+                                <!-- Page-header end -->
+                                <div class="pcoded-inner-content">
+                                    <!-- Main-body start -->
+                                    <div class="main-body">
+                                        <div class="page-wrapper">
+                                            <!-- Page-body start -->
+                                            <asp:ContentPlaceHolder ID="AdminContentPlaceHolder" runat="server">
+                                            </asp:ContentPlaceHolder>
+                                            <!-- Page-body end -->
+                                        </div>
+                                        <div id="styleSelector"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script
+        type="text/javascript"
+        src="../assets/admin/js/jquery/jquery.min.js"></script>
+    <script
+        type="text/javascript"
+        src="../assets/admin/js/jquery-ui/jquery-ui.min.js "></script>
+    <script
+        type="text/javascript"
+        src="../assets/admin/js/popper.js/popper.min.js"></script>
+    <script
+        type="text/javascript"
+        src="../assets/admin/js/bootstrap/js/bootstrap.min.js "></script>
+    <script
+        type="text/javascript"
+        src="../assets/admin/pages/widget/excanvas.js "></script>
+    <!-- waves js -->
+    <script src="../assets/admin/pages/waves/js/waves.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script
+        type="text/javascript"
+        src="../assets/admin/js/jquery-slimscroll/jquery.slimscroll.js "></script>
+    <!-- modernizr js -->
+    <script
+        type="text/javascript"
+        src="../assets/admin/js/modernizr/modernizr.js "></script>
+    <!-- slimscroll js -->
+    <script type="text/javascript" src="assets/admin/js/SmoothScroll.js"></script>
+    <script src="../assets/admin/js/jquery.mCustomScrollbar.concat.min.js "></script>
+    <!-- Chart js -->
+    <script type="text/javascript" src="../assets/js/chart.js/Chart.js"></script>
+    <!-- amchart js -->
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="../assets/admin/pages/widget/amchart/gauge.js"></script>
+    <script src="../assets/admin/pages/widget/amchart/serial.js"></script>
+    <script src="../assets/admin/pages/widget/amchart/light.js"></script>
+    <script src="../assets/admin/pages/widget/amchart/pie.min.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <!-- menu js -->
+    <script src="../assets/admin/js/pcoded.min.js"></script>
+    <script src="../assets/admin/js/vertical-layout.min.js "></script>
+    <!-- custom js -->
+    <script
+        type="text/javascript"
+        src="../assets/admin/pages/dashboard/custom-dashboard.js"></script>
+    <script type="text/javascript" src="../assets/admin/js/script.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+    <script src="/ckfinder/ckfinder.js"></script>
+</body>
+</html>

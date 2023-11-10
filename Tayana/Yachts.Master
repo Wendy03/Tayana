@@ -1,0 +1,182 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Yachts.master.cs" Inherits="Tayana.Yachts" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript" src="assets/home/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/home/Scripts/jquery.cycle.all.2.74.js"></script>
+    <script type="text/javascript" src="assets/home/Scripts/jquery.ad-gallery.js"></script>
+    <link href="assets/home/css/jquery.ad-gallery.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.slideshow').cycle({
+                fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('.topbuttom').click(function () {
+                $('html, body').scrollTop(0);
+
+            });
+
+        });
+        $(function () {
+            var galleries = $('.ad-gallery').adGallery();
+            galleries[0].settings.effect = 'fade';
+            if ($('.banner input[type=hidden]').val() == "0") {
+                $(".bannermasks").hide();
+                $(".banner").hide();
+                $("#crumb").css("top", "125px");
+            }
+        });
+    </script>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="assets/home/css/homestyle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/home/css/reset.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="contain">
+                <div class="sub">
+                    <p>
+                        <asp:HyperLink ID="HomeLink" runat="server" NavigateUrl="~/Index.aspx">Home</asp:HyperLink>
+                    </p>
+                </div>
+
+                <!--------------------------------選單開始---------------------------------------------------->
+                <div class="menu">
+                    <ul>
+                        <li class="menuli01">
+                            <asp:HyperLink ID="YachtsLink" runat="server" NavigateUrl="~/Yachts_OverView.aspx">Yachts</asp:HyperLink>
+                        </li>
+                        <li class="menuli02">
+                            <asp:HyperLink ID="NewsLink" runat="server" NavigateUrl="~/News_List.aspx">NEWS</asp:HyperLink>
+                        </li>
+                        <li class="menuli03">
+                            <asp:HyperLink ID="CompanyLink" runat="server" NavigateUrl="~/Compan_About.aspx">COMPANY</asp:HyperLink>
+                        <li class="menuli04">
+                            <asp:HyperLink ID="DealersLink1" runat="server" NavigateUrl="~/Dealers.aspx">DEALERS</asp:HyperLink>
+                        <li class="menuli05">
+                            <asp:HyperLink ID="ContactLink" runat="server" NavigateUrl="~/Contact.aspx">CONTACT</asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
+                <!--------------------------------選單開始結束---------------------------------------------------->
+
+                <!--遮罩-->
+                <div class="bannermasks">
+                    <img src="assets/home/images/banner01_masks.png" alt="&quot;&quot;" width="950" height="371" />
+                </div>
+                <!--遮罩結束-->
+
+                <!--------------------------------換圖開始---------------------------------------------------->
+
+                <div class="banner">
+                    <input type="hidden" name="HiddenField1" id="HiddenField1" value="1" />
+                    <div id="gallery" class="ad-gallery">
+                        <div class="ad-image-wrapper">
+                        </div>
+                        <div class="ad-controls">
+                        </div>
+                        <div class="ad-nav">
+                            <div class="ad-thumbs">
+
+                                <ul class="ad-thumb-list">
+
+                                    <asp:Repeater ID="BannerRepeater" runat="server">
+                                        <ItemTemplate>
+                                            <li>
+                                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("image") %>'>
+                                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("image") %>' CssClass="image0" Height="59" />
+                                                </asp:HyperLink>
+                                            </li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------------換圖結束---------------------------------------------------->
+
+                <div class="conbg">
+                    <!--------------------------------左邊選單開始---------------------------------------------------->
+                    <div class="left">
+                        <div class="left1">
+                            <p><span>YACHTS</span></p>
+                            <ul>
+                                <asp:Literal ID="MenuLiteral" runat="server"></asp:Literal>
+                                <%-- <li><a href="#">Dynasty 72</a></li>
+                                <li><a href="#">Tayana 64</a></li>
+                                <li><a href="#">Tayana 58</a></li>
+                                <li><a href="#">Tayana 55</a></li>--%>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--------------------------------左邊選單結束---------------------------------------------------->
+
+                    <!--------------------------------右邊選單開始---------------------------------------------------->
+                    <div id="crumb">
+                        <asp:HyperLink ID="HomeHyperLink" runat="server" NavigateUrl="~/Index.aspx">Home</asp:HyperLink> >>
+                        <asp:HyperLink ID="YachtsHyperLink" runat="server" NavigateUrl="~/Yachts_OverView.aspx">Yachts</asp:HyperLink> >>
+                        <asp:HyperLink ID="YachtHyperLink" runat="server">
+                            <span class="on1">
+                                <asp:Literal ID="LinkTitleLiteral" runat="server"></asp:Literal></span>
+                        </asp:HyperLink>
+                    </div>
+                    <div class="right">
+                        <div class="right1">
+                            <div class="title">
+                                <span>
+                                    <asp:Literal ID="TitleLiteral" runat="server"></asp:Literal>
+                                </span>
+                            </div>
+
+                            <!--------------------------------內容開始---------------------------------------------------->
+
+                            <!--次選單-->
+                            <div class="menu_y">
+                                <ul>
+                                    <li class="menu_y00">YACHTS</li>
+                                    <asp:Literal ID="NavLinkLiteral" runat="server"></asp:Literal>
+                                </ul>
+                            </div>
+                            <!--次選單-->
+
+                            <asp:ContentPlaceHolder ID="YachtsContentPlaceHolder" runat="server">
+                            </asp:ContentPlaceHolder>
+
+
+                            <!--------------------------------內容結束------------------------------------------------------>
+                        </div>
+                    </div>
+
+                    <!--------------------------------右邊選單結束---------------------------------------------------->
+                </div>
+
+
+                <!--------------------------------落款開始---------------------------------------------------->
+                <div class="footer">
+                    <p class="footerp01">© 1973-2011 Tayana Yachts, Inc. All Rights Reserved</p>
+                    <div class="footer01">
+                        <span>No. 60, Hai Chien Road, Chung Men Li, Lin Yuan District, Kaohsiung City, Taiwan, R.O.C.</span><br />
+                        <span>TEL：+886(7)641-2721</span> <span>FAX：+886(7)642-3193</span><span><a href="mailto:tayangco@ms15.hinet.net">E-mail：tayangco@ms15.hinet.net</a>.</span>
+                    </div>
+                </div>
+                <!--------------------------------落款結束---------------------------------------------------->
+
+            </div>
+
+        </div>
+    </form>
+</body>
+</html>
