@@ -9,4 +9,4 @@
 - 後台：設定會員權限、最新消息、代理商資料、遊艇頁面介紹
 - 前台：遊艇首頁輪播設定、遊艇型號及說明、代理商介紹、聯絡我們
    
-![image](https://i.imgur.com/ZFUfiOn.jpg){ width: 150px; }
+![image](https://i.imgur.com/ZFUfiOn.jpg)
